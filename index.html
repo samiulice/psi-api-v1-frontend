@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>HR System</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="active">
+                        <a href="index.html">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employees.html">
+                            <span class="material-symbols-outlined">group</span>
+                            Employees
+                        </a>
+                    </li>
+                    <li>
+                        <a href="attendance.html">
+                            <span class="material-symbols-outlined">fact_check</span>
+                            Attendance
+                        </a>
+                    </li>
+                    <li>
+                        <a href="leave.html">
+                            <span class="material-symbols-outlined">event_busy</span>
+                            Leave Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="performance.html">
+                            <span class="material-symbols-outlined">insights</span>
+                            Performance
+                        </a>
+                    </li>
+                    <li>
+                        <a href="payroll.html">
+                            <span class="material-symbols-outlined">payments</span>
+                            Payroll
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <span class="material-symbols-outlined">settings</span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <h4>Sarah Johnson</h4>
+                    <p>HR Manager</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-bar">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-right">
+                    <div class="notifications">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="messages">
+                        <span class="material-symbols-outlined">mail</span>
+                        <span class="badge">5</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard">
+                <h1>Dashboard</h1>
+                <div class="date">
+                    <p id="current-date">Monday, January 1, 2023</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(104, 132, 231, 0.2);">
+                            <span class="material-symbols-outlined" style="color: #6884E7;">group</span>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Employees</h3>
+                            <p class="stat-number">248</p>
+                            <p class="stat-change positive">+12% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(66, 194, 125, 0.2);">
+                            <span class="material-symbols-outlined" style="color: #42C27D;">person_add</span>
+                        </div>
+                        <div class="stat-info">
+                            <h3>New Hires</h3>
+                            <p class="stat-number">18</p>
+                            <p class="stat-change positive">+5% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(241, 85, 85, 0.2);">
+                            <span class="material-symbols-outlined" style="color: #F15555;">person_remove</span>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Turnover Rate</h3>
+                            <p class="stat-number">3.2%</p>
+                            <p class="stat-change negative">+0.8% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(255, 159, 67, 0.2);">
+                            <span class="material-symbols-outlined" style="color: #FF9F43;">event_busy</span>
+                        </div>
+                        <div class="stat-info">
+                            <h3>On Leave</h3>
+                            <p class="stat-number">12</p>
+                            <p class="stat-change neutral">Same as last week</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Department Distribution</h3>
+                            <div class="chart-actions">
+                                <select id="chart-timeframe">
+                                    <option value="monthly">Monthly</option>
+                                    <option value="quarterly">Quarterly</option>
+                                    <option value="yearly">Yearly</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart" id="department-chart">
+                            <!-- Canvas for chart will be inserted by JS -->
+                            <canvas id="departmentChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Attendance Overview</h3>
+                            <div class="chart-actions">
+                                <button class="chart-btn active">Weekly</button>
+                                <button class="chart-btn">Monthly</button>
+                            </div>
+                        </div>
+                        <div class="chart" id="attendance-chart">
+                            <!-- Canvas for chart will be inserted by JS -->
+                            <canvas id="attendanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activities & Upcoming Events -->
+                <div class="activity-events-container">
+                    <div class="recent-activities">
+                        <div class="section-header">
+                            <h3>Recent Activities</h3>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background-color: rgba(104, 132, 231, 0.2);">
+                                    <span class="material-symbols-outlined" style="color: #6884E7;">person_add</span>
+                                </div>
+                                <div class="activity-details">
+                                    <p><strong>New employee added</strong> - James Wilson joined as Software Developer</p>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background-color: rgba(66, 194, 125, 0.2);">
+                                    <span class="material-symbols-outlined" style="color: #42C27D;">edit_document</span>
+                                </div>
+                                <div class="activity-details">
+                                    <p><strong>Leave approved</strong> - Emily Parker's leave request was approved</p>
+                                    <span class="activity-time">5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background-color: rgba(255, 159, 67, 0.2);">
+                                    <span class="material-symbols-outlined" style="color: #FF9F43;">payments</span>
+                                </div>
+                                <div class="activity-details">
+                                    <p><strong>Payroll processed</strong> - December payroll has been processed</p>
+                                    <span class="activity-time">Yesterday</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background-color: rgba(104, 132, 231, 0.2);">
+                                    <span class="material-symbols-outlined" style="color: #6884E7;">badge</span>
+                                </div>
+                                <div class="activity-details">
+                                    <p><strong>Position updated</strong> - Michael Brown promoted to Senior Designer</p>
+                                    <span class="activity-time">2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="upcoming-events">
+                        <div class="section-header">
+                            <h3>Upcoming Events</h3>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="events-list">
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="event-day">15</span>
+                                    <span class="event-month">JAN</span>
+                                </div>
+                                <div class="event-details">
+                                    <h4>Team Building Workshop</h4>
+                                    <p><span class="material-symbols-outlined">schedule</span> 10:00 AM - 4:00 PM</p>
+                                    <p><span class="material-symbols-outlined">location_on</span> Conference Room A</p>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="event-day">22</span>
+                                    <span class="event-month">JAN</span>
+                                </div>
+                                <div class="event-details">
+                                    <h4>Quarterly Review Meeting</h4>
+                                    <p><span class="material-symbols-outlined">schedule</span> 2:00 PM - 5:00 PM</p>
+                                    <p><span class="material-symbols-outlined">location_on</span> Main Auditorium</p>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="event-day">28</span>
+                                    <span class="event-month">JAN</span>
+                                </div>
+                                <div class="event-details">
+                                    <h4>New Hire Orientation</h4>
+                                    <p><span class="material-symbols-outlined">schedule</span> 9:00 AM - 12:00 PM</p>
+                                    <p><span class="material-symbols-outlined">location_on</span> Training Room B</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

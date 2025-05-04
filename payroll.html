@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll - HR Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>HR System</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employees.html">
+                            <span class="material-symbols-outlined">group</span>
+                            Employees
+                        </a>
+                    </li>
+                    <li>
+                        <a href="attendance.html">
+                            <span class="material-symbols-outlined">fact_check</span>
+                            Attendance
+                        </a>
+                    </li>
+                    <li>
+                        <a href="leave.html">
+                            <span class="material-symbols-outlined">event_busy</span>
+                            Leave Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="performance.html">
+                            <span class="material-symbols-outlined">insights</span>
+                            Performance
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="payroll.html">
+                            <span class="material-symbols-outlined">payments</span>
+                            Payroll
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <span class="material-symbols-outlined">settings</span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <h4>Sarah Johnson</h4>
+                    <p>HR Manager</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-bar">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-right">
+                    <div class="notifications">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="messages">
+                        <span class="material-symbols-outlined">mail</span>
+                        <span class="badge">5</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Payroll Content -->
+            <div class="payroll-page">
+                <div class="page-header">
+                    <h1>Payroll Management</h1>
+                    <div class="header-actions">
+                        <button class="secondary-btn">
+                            <span class="material-symbols-outlined">calendar_month</span>
+                            January 2023
+                        </button>
+                        <button class="primary-btn" id="run-payroll-btn">
+                            <span class="material-symbols-outlined">play_arrow</span>
+                            Run Payroll
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Payroll Overview -->
+                <div class="payroll-overview">
+                    <div class="overview-card">
+                        <div class="overview-icon" style="background-color: rgba(104, 132, 231, 0.2);">
+                            <span class="material-symbols-outlined" style="color: #6884E7;">account_balance</span>
+                        </div>
+                        <div class="overview-info">
+                            <h3>Total Payroll</h3>
+                            <p class="overview-number">$285,420</p>
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="overview-icon" style="background-color: rgba(66, 194, 125, 0.2);">
+                            <span class="material-symbols-outlined" style="color: #42C27D;">group</span>
+                        </div>
+                        <div class="overview-info">
+                            <h3>Employees Paid</h3>
+                            <p class="overview-number">248</p>
+                            <p class="overview-percentage">100%</p>
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="overview-icon" style="background-color: rgba(255, 159, 67, 0.2);">
+                            <span class="material-symbols-outlined" style="color: #FF9F43;">schedule</span>
+                        </div>
+                        <div class="overview-info">
+                            <h3>Overtime Hours</h3>
+                            <p class="overview-number">356</p>
+                            <p class="overview-percentage">+12% from last month</p>
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="overview-icon" style="background-color: rgba(241, 85, 85, 0.2);">
+                            <span class="material-symbols-outlined" style="color: #F15555;">trending_up</span>
+                        </div>
+                        <div class="overview-info">
+                            <h3>Payroll Increase</h3>
+                            <p class="overview-number">3.2%</p>
+                            <p class="overview-percentage">+0.5% from last month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payroll Tabs -->
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="payslips">Payslips</button>
+                        <button class="tab-btn" data-tab="salary">Salary Components</button>
+                        <button class="tab-btn" data-tab="deductions">Deductions</button>
+                        <button class="tab-btn" data-tab="reports">Reports</button>
+                    </div>
+                    
+                    <!-- Payslips Tab -->
+                    <div class="tab-content active" id="payslips-tab">
+                        <div class="filters-actions">
+                            <div class="filters">
+                                <div class="filter-item">
+                                    <label for="department-filter">Department</label>
+                                    <select id="department-filter">
+                                        <option value="all">All Departments</option>
+                                        <option value="it">IT</option>
+                                        <option value="hr">HR</option>
+                                        <option value="marketing">Marketing</option>
+                                        <option value="finance">Finance</option>
+                                        <option value="operations">Operations</option>
+                                    </select>
+                                </div>
+                                <div class="filter-item">
+                                    <label for="status-filter">Status</label>
+                                    <select id="status-filter">
+                                        <option value="all">All Status</option>
+                                        <option value="paid">Paid</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="failed">Failed</option>
+                                    </select>
+                                </div>
+                                <div class="filter-item">
+                                    <label for="month-filter">Month</label>
+                                    <select id="month-filter">
+                                        <option value="january">January 2023</option>
+                                        <option value="december">December 2022</option>
+                                        <option value="november">November 2022</option>
+                                        <option value="october">October 2022</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="secondary-btn">
+                                    <span class="material-symbols-outlined">filter_list</span>
+                                    More Filters
+                                </button>
+                                <button class="secondary-btn">
+                                    <span class="material-symbols-outlined">download</span>
+                                    Export
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Payslips Table -->
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Employee</th>
+                                        <th>ID</th>
+                                        <th>Department</th>
+                                        <th>Position</th>
+                                        <th>Salary</th>
+                                        <th>Overtime</th>
+                                        <th>Deductions</th>
+                                        <th>Net Pay</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="payslips-table-body">
+                                    <!-- Will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <div class="pagination-info">
+                                Showing <span id="showing-start">1</span> to <span id="showing-end">10</span> of <span id="total-items">248</span> entries
+                            </div>
+                            <div class="pagination-controls">
+                                <button class="pagination-btn" disabled>
+                                    <span class="material-symbols-outlined">chevron_left</span>
+                                </button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">2</button>
+                                <button class="pagination-btn">3</button>
+                                <button class="pagination-btn">4</button>
+                                <button class="pagination-btn">5</button>
+                                <button class="pagination-btn">
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Salary Components Tab -->
+                    <div class="tab-content" id="salary-tab">
+                        <div class="salary-header">
+                            <h3>Salary Components</h3>
+                            <button class="primary-btn">
+                                <span class="material-symbols-outlined">add</span>
+                                Add Component
+                            </button>
+                        </div>
+
+                        <div class="salary-components-list">
+                            <div class="component-card">
+                                <div class="component-header">
+                                    <h4>Basic Salary</h4>
+                                    <div class="component-badge">Fixed</div>
+                                </div>
+                                <div class="component-details">
+                                    <p><strong>Description:</strong> Base salary for all employees</p>
+                                    <p><strong>Calculation:</strong> Fixed amount based on position and experience</p>
+                                    <p><strong>Taxable:</strong> Yes</p>
+                                    <div class="component-actions">
+                                        <button class="secondary-btn">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Edit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="component-card">
+                                <div class="component-header">
+                                    <h4>Housing Allowance</h4>
+                                    <div class="component-badge">Fixed</div>
+                                </div>
+                                <div class="component-details">
+                                    <p><strong>Description:</strong> Allowance for housing expenses</p>
+                                    <p><strong>Calculation:</strong> 15% of basic salary</p>
+                                    <p><strong>Taxable:</strong> No</p>
+                                    <div class="component-actions">
+                                        <button class="secondary-btn">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Edit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="component-card">
+                                <div class="component-header">
+                                    <h4>Transportation Allowance</h4>
+                                    <div class="component-badge">Fixed</div>
+                                </div>
+                                <div class="component-details">
+                                    <p><strong>Description:</strong> Allowance for transportation expenses</p>
+                                    <p><strong>Calculation:</strong> 10% of basic salary</p>
+                                    <p><strong>Taxable:</strong> No</p>
+                                    <div class="component-actions">
+                                        <button class="secondary-btn">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Edit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="component-card">
+                                <div class="component-header">
+                                    <h4>Performance Bonus</h4>
+                                    <div class="component-badge">Variable</div>
+                                </div>
+                                <div class="component-details">
+                                    <p><strong>Description:</strong> Bonus based on performance evaluation</p>
+                                    <p><strong>Calculation:</strong> 0-20% of basic salary based on performance rating</p>
+                                    <p><strong>Taxable:</strong> Yes</p>
+                                    <div class="component-actions">
+                                        <button class="secondary-btn">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Edit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="component-card">
+                                <div class="component-header">
+                                    <h4>Overtime Pay</h4>
+                                    <div class="component-badge">Variable</div>
+                                </div>
+                                <div class="component-details">
+                                    <p><strong>Description:</strong> Payment for overtime hours worked</p>
+                                    <p><strong>Calculation:</strong> 1.5x hourly rate for weekdays, 2x for weekends</p>
+                                    <p><strong>Taxable:</strong> Yes</p>
+                                    <div class="component-actions">
+                                        <button class="secondary-btn">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Edit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deductions Tab -->
+                    <div class="tab-content" id="deductions-tab">
+                        <div class="deductions-header">
+                            <h3>Deductions</h3>
+                            <button class="primary-btn">
+                                <span class="material-symbols-outlined">add</span>
+                                Add Deduction
+                            </button>
+                        </div>
+
+                        <div class="deductions-list">
+                            <div class="component-card">
+                                <div class="component-header">
+                                    <h4>Income Tax</h4>
+                                    <div class="component-badge">Statutory</div>
+                                </div>
+                                <div class="component-details">
+                                    <p><strong>Description:</strong> Federal income tax</p>
+                                    <p><strong>Calculation:</strong> Progressive tax rates based on income</p>
+                                    <p><strong>Mandatory:</strong> Yes</p>
+                                    <div class="component-actions">
+                                        <button class="secondary-btn">
+                                            <span class="material-symbols-outlined">visibility</span>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="component-card">
+                                <div class="component-header">
+                                    <h4>Social Security</h4>
+                                    <div class="component-badge">Statutory</div>
+                                </div>
+                                <div class="component-details">
+                                    <p><strong>Description:</strong> Social security contribution</p>
+                                    <p><strong>Calculation:</strong> 6.2% of gross salary up to annual limit</p>
+                                    <p><strong>Mandatory:</strong> Yes</p>
+                                    <div class="component-actions">
+                                        <button class="secondary-btn">
+                                            <span class="material-symbols-outlined">visibility</span>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="component-card">
+                                <div class="component-header">
+                                    <h4>Medicare</h4>
+                                    <div class="component-badge">Statutory</div>
+                                </div>
+                                <div class="component-details">
+                                    <p><strong>Description:</strong> Medicare contribution</p>
+                                    <p><strong>Calculation:</strong> 1.45% of gross salary</p>
+                                    <p><strong>Mandatory:</strong> Yes</p>
+                                    <div class="component-actions">
+                                        <button class="secondary-btn">
+                                            <span class="material-symbols-outlined">visibility</span>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="component-card">
+                                <div class="component-header">
+                                    <h4>401(k) Contribution</h4>
+                                    <div class="component-badge">Voluntary</div>
+                                </div>
+                                <div class="component-details">
+                                    <p><strong>Description:</strong> Employee retirement plan contribution</p>
+                                    <p><strong>Calculation:</strong> Employee-selected percentage (0-15%)</p>
+                                    <p><strong>Mandatory:</strong> No</p>
+                                    <div class="component-actions">
+                                        <button class="secondary-btn">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Edit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="component-card">
+                                <div class="component-header">
+                                    <h4>Health Insurance</h4>
+                                    <div class="component-badge">Voluntary</div>
+                                </div>
+                                <div class="component-details">
+                                    <p><strong>Description:</strong> Employee portion of health insurance premium</p>
+                                    <p><strong>Calculation:</strong> Fixed amount based on selected plan</p>
+                                    <p><strong>Mandatory:</strong> No</p>
+                                    <div class="component-actions">
+                                        <button class="secondary-btn">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Edit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reports Tab -->
+                    <div class="tab-content" id="reports-tab">
+                        <div class="reports-container">
+                            <div class="report-card">
+                                <div class="report-icon">
+                                    <span class="material-symbols-outlined">description</span>
+                                </div>
+                                <div class="report-info">
+                                    <h3>Payroll Summary</h3>
+                                    <p>Monthly payroll summary by department</p>
+                                    <button class="primary-btn">Generate</button>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon">
+                                    <span class="material-symbols-outlined">description</span>
+                                </div>
+                                <div class="report-info">
+                                    <h3>Tax Report</h3>
+                                    <p>Tax deductions and contributions report</p>
+                                    <button class="primary-btn">Generate</button>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon">
+                                    <span class="material-symbols-outlined">description</span>
+                                </div>
+                                <div class="report-info">
+                                    <h3>Overtime Report</h3>
+                                    <p>Overtime hours and payments by department</p>
+                                    <button class="primary-btn">Generate</button>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon">
+                                    <span class="material-symbols-outlined">description</span>
+                                </div>
+                                <div class="report-info">
+                                    <h3>Annual Compensation</h3>
+                                    <p>Annual compensation report by employee</p>
+                                    <button class="primary-btn">Generate</button>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon">
+                                    <span class="material-symbols-outlined">description</span>
+                                </div>
+                                <div class="report-info">
+                                    <h3>Benefits Report</h3>
+                                    <p>Employee benefits and deductions report</p>
+                                    <button class="primary-btn">Generate</button>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="report-icon">
+                                    <span class="material-symbols-outlined">description</span>
+                                </div>
+                                <div class="report-info">
+                                    <h3>Payroll Variance</h3>
+                                    <p>Month-to-month payroll variance analysis</p>
+                                    <button class="primary-btn">Generate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Run Payroll Modal -->
+    <div class="modal" id="run-payroll-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Run Payroll - January 2023</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="payroll-summary">
+                    <div class="summary-item">
+                        <span>Total Employees</span>
+                        <span>248</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Basic Salary</span>
+                        <span>$235,600</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Allowances</span>
+                        <span>$58,900</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Overtime</span>
+                        <span>$12,450</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Deductions</span>
+                        <span>$21,530</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Net Payroll Amount</span>
+                        <span>$285,420</span>
+                    </div>
+                </div>
+
+                <div class="payroll-confirmation">
+                    <h3>Confirmation</h3>
+                    <p>Are you sure you want to process payroll for January 2023? This action will:</p>
+                    <ul>
+                        <li>Generate payslips for all 248 employees</li>
+                        <li>Calculate all earnings and deductions</li>
+                        <li>Prepare payment files for bank transfer</li>
+                    </ul>
+                    <p>Please note: Once processed, modifications will require manual adjustments.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn" id="cancel-btn">Cancel</button>
+                <button class="primary-btn" id="confirm-payroll-btn">Confirm & Process</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="payroll.js"></script>
+</body>
+</html>

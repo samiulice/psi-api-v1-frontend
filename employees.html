@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees - HR Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>HR System</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="employees.html">
+                            <span class="material-symbols-outlined">group</span>
+                            Employees
+                        </a>
+                    </li>
+                    <li>
+                        <a href="attendance.html">
+                            <span class="material-symbols-outlined">fact_check</span>
+                            Attendance
+                        </a>
+                    </li>
+                    <li>
+                        <a href="leave.html">
+                            <span class="material-symbols-outlined">event_busy</span>
+                            Leave Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="performance.html">
+                            <span class="material-symbols-outlined">insights</span>
+                            Performance
+                        </a>
+                    </li>
+                    <li>
+                        <a href="payroll.html">
+                            <span class="material-symbols-outlined">payments</span>
+                            Payroll
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <span class="material-symbols-outlined">settings</span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <h4>Sarah Johnson</h4>
+                    <p>HR Manager</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-bar">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search employees...">
+                </div>
+                <div class="header-right">
+                    <div class="notifications">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="messages">
+                        <span class="material-symbols-outlined">mail</span>
+                        <span class="badge">5</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Employees Content -->
+            <div class="employees-page">
+                <div class="page-header">
+                    <h1>Employees</h1>
+                    <button class="primary-btn" id="add-employee-btn">
+                        <span class="material-symbols-outlined">add</span>
+                        Add Employee
+                    </button>
+                </div>
+
+                <!-- Filters and Actions -->
+                <div class="filters-actions">
+                    <div class="filters">
+                        <div class="filter-item">
+                            <label for="department-filter">Department</label>
+                            <select id="department-filter">
+                                <option value="all">All Departments</option>
+                                <option value="it">IT</option>
+                                <option value="hr">HR</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="finance">Finance</option>
+                                <option value="operations">Operations</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label for="position-filter">Position</label>
+                            <select id="position-filter">
+                                <option value="all">All Positions</option>
+                                <option value="manager">Manager</option>
+                                <option value="developer">Developer</option>
+                                <option value="designer">Designer</option>
+                                <option value="analyst">Analyst</option>
+                                <option value="specialist">Specialist</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label for="status-filter">Status</label>
+                            <select id="status-filter">
+                                <option value="all">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="on-leave">On Leave</option>
+                                <option value="terminated">Terminated</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="secondary-btn">
+                            <span class="material-symbols-outlined">filter_list</span>
+                            More Filters
+                        </button>
+                        <button class="secondary-btn">
+                            <span class="material-symbols-outlined">download</span>
+                            Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Employees Table -->
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="select-all">
+                                </th>
+                                <th>Employee</th>
+                                <th>ID</th>
+                                <th>Department</th>
+                                <th>Position</th>
+                                <th>Status</th>
+                                <th>Hire Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employees-table-body">
+                            <!-- Employee rows will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <div class="pagination-info">
+                        Showing <span id="showing-start">1</span> to <span id="showing-end">10</span> of <span
+                            id="total-items">248</span> entries
+                    </div>
+                    <div class="pagination-controls">
+                        <button class="pagination-btn" disabled>
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">4</button>
+                        <button class="pagination-btn">5</button>
+                        <button class="pagination-btn">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Employee Modal -->
+            <div class="modal" id="add-employee-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Add New Employee</h2>
+                        <button class="close-btn">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="add-employee-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" name="first-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" name="last-name" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="department">Department</label>
+                                    <select id="department" name="department" required>
+                                        <option value="">Select Department</option>
+                                        <option value="it">IT</option>
+                                        <option value="hr">HR</option>
+                                        <option value="marketing">Marketing</option>
+                                        <option value="finance">Finance</option>
+                                        <option value="operations">Operations</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="position">Position</label>
+                                    <select id="position" name="position" required>
+                                        <option value="">Select Position</option>
+                                        <option value="manager">Manager</option>
+                                        <option value="developer">Developer</option>
+                                        <option value="designer">Designer</option>
+                                        <option value="analyst">Analyst</option>
+                                        <option value="specialist">Specialist</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="hire-date">Hire Date</label>
+                                    <input type="date" id="hire-date" name="hire-date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="salary">Salary</label>
+                                    <input type="number" id="salary" name="salary" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="address">Address</label>
+                                    <textarea id="address" name="address" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="secondary-btn" id="cancel-btn">Cancel</button>
+                        <button class="primary-btn" id="save-employee-btn">Save Employee</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <script src="employees.js"></script>
+</body>
+
+</html>
