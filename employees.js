@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     let employees
     // fetch employee data from backend
-    fetch("http://localhost:8080/api/v1/users/list", { method: 'POST' })
+    fetch("https://psi-api-v1-3.onrender.com/api/v1/users/list", { method: 'POST' })
         .then(response => response.json())
         .then(data => {
             employees = data.employees || []
